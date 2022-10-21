@@ -1,0 +1,101 @@
+.header{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(23,25,27);
+
+  & img{
+    width: 10%;
+  }
+  & div{
+    display: flex;
+    width: 100%;
+    gap: 10%;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 50px;
+    font-size: 20px;
+    & h3:hover, :focus{
+        animation: pulse 1s;
+        box-shadow: 0 0 100px 10px rgb(255, 0, 0);
+        
+        color: #03aba8;
+        cursor: pointer;
+        
+    }
+  } 
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  background-image: url('./Images/fondo.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+
+.itemContainer{ 
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  
+  & img{
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10%;
+    transition: transform 1s;
+    overflow: hidden; 
+    &:hover{
+      transform: scale(1.08);
+      filter: blur(1px);
+    }
+    
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); 
+        border-radius: 10%;}
+}
