@@ -1,17 +1,33 @@
-import Logo from '../Images/Logo.png';
-import Cart from './CartWidget';
+import Logo from '../api/Images/Logo.png';
+import {CartWidget} from './CartWidget';
+import {Link,NavLink} from 'react-router-dom';
 
-const NavBar = (props) => {
+const links = ['Vinos','Cervezas','Whiskys','Aperitivos'];
+
+export const NavBar = () => {
     return <header className="header">
-        <img src={Logo} className='logoImg' alt='Logo'></img>
+        <Link to='/'>
+        <img src={Logo} className='logoImg' alt='Logo'/>
+        </Link>
+        
         <div>
-                <h3>{props.titulo1}</h3>
-                <h3>{props.titulo2}</h3>
-                <h3>{props.titulo3}</h3>
-                <h3>{props.titulo4}</h3>
-                <Cart/>
+                <div>
+                   {links.map((elem) => {
+                        return(
+                            <NavLink
+                            style={({ isActive }) => ({
+                                color: isActive ? "blue" : "#000000",
+                                textDecoration: "none",
+                              })}
+                              to={`/category/${elem.toLowerCase()}`}
+                              key={elem}>
+                                {elem}                    
+                            </NavLink>
+                        );
+                   })} 
+                </div>
+                <CartWidget/>
         </div>
     </header>;
 }
 
-export default NavBar;

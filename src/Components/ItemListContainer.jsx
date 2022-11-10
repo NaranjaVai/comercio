@@ -1,15 +1,39 @@
-import img1 from '../Images/latitud.jpg';
-import img2 from '../Images/pilsen.jpg';
-import img3 from '../Images/whisky.png';
+import { useEffect, useState } from "react";
+import Item from "./Item";
+import {useParams} from "react-router-dom";
+import { getProductos } from "../api/productos";
 
 
-const ItemListContainer = (greeting) =>{
-    return <div className="itemContainer">
-        <div> <img src={img1} alt="" /> <h3>{greeting.name1}</h3> <h4>{greeting.price1}</h4> </div>
-        <div> <img src={img2} alt="" /> <h3>{greeting.name2}</h3> <h4>{greeting.price2}</h4></div>
-        <div> <img src={img3} alt="" /> <h3>{greeting.name3}</h3> <h4>{greeting.price3}</h4></div>
-    </div>;
 
-}
+export const ItemListContainer = () =>{
+    const {categoryId} = useParams();
+    const [productos, setProductos] = useState([]);
+  
+    useEffect(() => {
+      setProductos([])
+      getProductos(categoryId)
+        .then(items => setProductos(items) )
+        .catch(e => console.log(e));
+    }, [categoryId]);
+  
+    return (
+      <div className="products">
+        {productos.map((producto) => {
+          return (
+            <div className='products_item'>
+            <Item 
+              key={producto.id}
+              id={producto.id}
+              imagen={producto.imagen}
+              nombre={producto.nombre}
+              categoria={producto.categoria}
+              tag={producto.tag}
+              precio={producto.precio}
+            />
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
 
-export default ItemListContainer;

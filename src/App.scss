@@ -4,7 +4,7 @@
   background-color: rgb(23,25,27);
 
   & img{
-    width: 10%;
+    width: 200px;
   }
   & div{
     display: flex;
@@ -25,10 +25,11 @@
   } 
 }
 
-body{
+body{ 
   height: 100%;
+  min-height: 100vh;
   width: 100%;
-  background-image: url('./Images/fondo.jpg');
+  background-image: url('./api/Images/fondo.jpg');
   background-position: center;
   background-size: cover;
 }
@@ -50,15 +51,48 @@ body{
     &:hover{
       transform: scale(1.08);
       filter: blur(1px);
-    }
-    
+    } 
   }
-  
 }
 
-
-
-
+.card {
+  cursor: pointer;
+  & .card__top{
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+      & img{
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5%;
+      overflow: hidden;
+      
+        &:hover{      
+        transition: 1.5s;      
+        filter: blur(1px);                  
+        }     
+      }   
+  }
+}    
+.products{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  
+  gap: 5rem;
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  span{
+    font-size: 26px;
+  }
+  img{
+    padding-top: 10rem;
+    width: 100%;
+  }
+}
 
 
 
