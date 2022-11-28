@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai';
-import IoCartSharp from 'react-icons/io';
+import {IoCartSharp} from 'react-icons/io5';
 
 
 const Counter = ({ stock, onAdd }) => {
