@@ -1,7 +1,8 @@
 import { ItemListContainer } from '../Components/ItemListContainer';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getProductos } from '../api/productos';
+import { getProductCategory} from '../api/productos';
+import { UserLayout } from '../Components/UserLayout';
 
 export const Category = () => { 
     const {categoryId} = useParams();
@@ -9,13 +10,15 @@ export const Category = () => {
     
     useEffect(() => {
       setProductos([])
-      getProductos(categoryId)
+      getProductCategory(categoryId)
         .then(items => setProductos(items) )
         .catch(e => console.log(e));
     }, [categoryId]);
   
     return (
+            <UserLayout>
             <ItemListContainer productos={productos}/>
+            </UserLayout>
             );        
 };
 

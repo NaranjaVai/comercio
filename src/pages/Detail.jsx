@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getProductId } from "../api/productos";
 import Counter from "../Components/Counter";
 import { UseCartCont } from "../context/cartContext";
+import { UserLayout } from "../Components/UserLayout";
 
 export const Detail = () => {
   const {productId} = useParams();
@@ -13,7 +14,7 @@ export const Detail = () => {
     getProductId(productId)
       .then((data) => {
         setProduct(data);
-        console.log(data);
+        //console.log(data);
       });
   }, [productId]);
 
@@ -22,6 +23,7 @@ export const Detail = () => {
   }
 
   return (
+    <UserLayout>
       <div>
         <div className="infoDetail">       
         <span>{product?.nombre}</span>
@@ -34,5 +36,6 @@ export const Detail = () => {
         </div>
  
       </div>
+      </UserLayout>
   );
 };

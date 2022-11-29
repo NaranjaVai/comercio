@@ -1,17 +1,17 @@
 import { createContext, useContext, useState } from "react";
 
-const CartCont = createContext([]);
+export const CartCont = createContext([]);
 export const UseCartCont = () => useContext(CartCont);
 
 export const CarritoProvider = ({children}) => {
     const [cart, setCart] = useState([]);
-
+    
     const addProduct = (item, cant) => {
         const elem = cart.find((e) => e.id === item.id);
         if(!elem) return setCart([...cart,{...item,cant}]);
         const aux = cart.map((e) =>{
-            if(e.id === item.id){
-                return {...e, cant : e.cant + cant};
+            if(e.id === item.id && e.stock > e.cant && (e.cant + cant <= e.stock)){
+                return {...e, cant: e.cant + cant};
             }
             return e;
         });
@@ -23,10 +23,11 @@ export const CarritoProvider = ({children}) => {
         setCart(aux);
     };
 
-    const getTotal = () => {cart.reduce((acc, p) => acc + p.precio * p.cant , 0)}
+    const getCant = () => cart.reduce((acc, p) => acc + p.cant , 0)
+    
+    const getTotal = () => cart.reduce((acc, p) => acc + p.precio * p.cant , 0)
 
-    const getCant = () => {cart.reduce((acc, p) => acc + p.cant , 0)}
-
+    
     const emptyCart = () => setCart([]);
 
     const value = {
@@ -38,8 +39,8 @@ export const CarritoProvider = ({children}) => {
         emptyCart
     };
 
-    return <CarritoProvider.Provider value={value} displayName='cartContext'> {children}
-    </CarritoProvider.Provider>
+    return <CartCont.Provider value={value} displayName='cartContext'> {children}
+    </CartCont.Provider>
 
     
 }

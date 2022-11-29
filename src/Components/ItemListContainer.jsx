@@ -14,6 +14,7 @@ export const ItemListContainer = ({productos}) =>{
               categoria={producto.categoria}
               tag={producto.tag}
               precio={producto.precio}
+              stock={producto.stock}
             />
           );
         })}

@@ -4,6 +4,7 @@ import { UseCartCont } from "../context/cartContext";
 import { addOrder } from "../api/orders";
 import { updateManyProducts } from "../api/productos";
 import Button from "../Components/Button";
+import { UserLayout } from "../Components/UserLayout";
 
 
 export const Cart = () => {
@@ -27,10 +28,11 @@ export const Cart = () => {
             total: getTotal(),
         };
         const id = await addOrder(order);
-        await updateManyProducts(items);
+        /* await updateManyProducts(items); */
         emptyCart();
     };
     return (
+        <UserLayout>
         <div className="contenido">
             {cart.map ((p) =>(
             <div key={p.id}>
@@ -41,7 +43,7 @@ export const Cart = () => {
             <div>
                 <span>Nombre</span>
                 <input onChange={(e) => setName(e.target.value)} />
-                <span>Direccion</span>
+                <span>Telefono</span>
                 <input onChange={(e) => setPhone(e.target.value)} />
                 <span>Email</span>
                 <input onChange={(e) => setEmail(e.target.value)} />
@@ -49,6 +51,7 @@ export const Cart = () => {
             <Button onClick={createOrder}>Comprar</Button>
 
         </div>
+        </UserLayout>
     )
 
 

@@ -24,7 +24,7 @@ const Counter = ({ stock, onAdd }) => {
       <span>{contador}</span>
       <Button onClick={() => handleSubstract()}> {<AiOutlineMinus/>} </Button>
       <Button onClick={() => {
-       if(contador) onAdd()     
+       if(contador) onAdd(contador)     
         }}> {<IoCartSharp/>} </Button>
     </div>
   );
