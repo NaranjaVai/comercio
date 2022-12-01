@@ -6,7 +6,7 @@ import { UseCartCont } from "../context/cartContext";
 import { UserLayout } from "../Components/UserLayout";
 
 export const Detail = () => {
-  const {productId} = useParams();
+  const { productId } = useParams();
   const [product, setProduct] = useState({});
   const { addProduct } = UseCartCont();
 
@@ -19,23 +19,20 @@ export const Detail = () => {
   }, [productId]);
 
   const handleAdd = (cant) => {
-    addProduct(product,cant);
+    addProduct(product, cant);
   }
 
   return (
     <UserLayout>
-      <div>
-        <div className="infoDetail">       
+      <div className="infoDetail">
+        <img src={product?.imagen} alt="" />
         <span>{product?.nombre}</span>
         <p>{product?.tag}</p>
-        <h2>{product?.categoria}</h2>
-        <img src={product?.imagen} alt=""/>
-        <h3>{product?.precio}</h3>
-        <span>Disponibles en Stock : {product?.stock}</span>
-        <Counter stock={product?.stock} onAdd={handleAdd}/>
-        </div>
- 
+        <h3>$ {product?.precio}</h3>
+        <h4>Disponibles en Stock : {product?.stock}</h4>
+        <Counter stock={product?.stock} onAdd={handleAdd} />
       </div>
-      </UserLayout>
+
+    </UserLayout>
   );
 };

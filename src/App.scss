@@ -1,18 +1,21 @@
-.App{
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
+.App {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.header{
+.header {
   display: flex;
   flex-direction: row;
-  background-color: rgb(23,25,27);
+  background-color: rgb(23, 25, 27);
 
-  & img{
+  & img {
     width: 200px;
   }
-  & div{
+
+  & div {
     display: flex;
     width: 100%;
     gap: 10%;
@@ -20,81 +23,233 @@
     justify-content: flex-end;
     margin-right: 50px;
     font-size: 20px;
-    & h3:hover, :focus{
-        animation: pulse 1s;
-        box-shadow: 0 0 100px 10px rgb(255, 0, 0);
-        
-        color: #03aba8;
-        cursor: pointer;
-        
+
+    & h3:hover,
+    :focus {
+      animation: pulse 1s;
+      box-shadow: 0 0 100px 10px rgb(255, 0, 0);
+
+      color: #03aba8;
+      cursor: pointer;
+
     }
-  } 
+  }
 }
 
-body{ 
+body {
   height: 100%;
   min-height: 100vh;
   width: 100%;
   background-image: url('./api/Images/fondo.jpg');
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Roboto Condensed', sans-serif;
+  ;
 }
 
 
-.itemContainer{ 
+.itemContainer {
   margin-top: 5%;
   display: flex;
   justify-content: space-around;
   overflow: hidden;
-  
-  & img{
+
+  & img {
     width: 400px;
     height: 500px;
     object-fit: cover;
     border-radius: 10%;
     transition: transform 1s;
-    overflow: hidden; 
-    &:hover{
+    overflow: hidden;
+
+    &:hover {
       transform: scale(1.08);
       filter: blur(1px);
-    } 
+    }
   }
 }
 
 .card {
   cursor: pointer;
-  & .card__top{
+
+  & .card__top {
     position: relative;
     overflow: hidden;
     border-radius: 5%;
-      & img{
+
+    & img {
       width: 300px;
       height: 300px;
       object-fit: cover;
-      border-radius: 5%;
+      border-radius: 45% 20%;
       overflow: hidden;
-      
-        &:hover{      
-        transition: 1.5s;      
-        filter: blur(1px);                  
-        }     
-      }   
+
+      &:hover {
+        transition: 1.5s;
+        filter: blur(2px);
+      }
+    }
   }
-}    
-.products{
+
+  .card__bottom {
+    color: white;
+    backdrop-filter: blur(2px);
+
+    h2 {
+      text-align: justify;
+      font-size: 2rem;
+
+      &:last-of-type {
+        font-style: italic;
+        font-size: 1.5rem;
+      }
+    }
+
+    h3 {
+      font-size: 1.8rem;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    button {
+      cursor: pointer;
+      border-radius: 10% 10%;
+      background-color: grey;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      width: 100%;
+
+      &:hover {
+        background-color: rgba(17, 128, 41, 0.5);
+      }
+    }
+
+  }
+}
+
+.footer {
+  cursor: pointer;
+  margin-top: 2rem;
+  height: 80px;
+  width: 100%;
+  background: linear-gradient(to bottom right, black, white);
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    gap: 300px;
+    justify-content: center;
+
+    li:hover {
+      color: lightblue;
+    }
+  }
+}
+
+.infoDetail {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+
+  span {
+    font-size: 2rem;
+    padding-top: 2rem;
+  }
+
+  img {
+    width: 50%;
+    border-radius: 45% 20%;
+  }
+}
+
+.counter {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  button{
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+  &:hover{
+    background:rgba(17, 128, 41,.5);
+    color: lightblue;
+  }
+  &:last-of-type{
+    width: 80px;
+  }
+  
+  }
+
+  span {
+    padding-bottom: 2rem;
+  }
+}
+
+.dataCart{
+  display: grid;
+  align-self: baseline;
+  padding-left: 2rem;
+}
+
+
+.contenido{
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+  .total{
+    font-size: 2rem;
+    &:hover{
+      color: lightblue;
+    }
+  }
+  button{
+    background:linear-gradient(to bottom right,lightblue,white);
+    width: 20%;
+    height: 50px;
+    &:hover{
+      color: lightblue;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+
+.products {
   display: grid;
   grid-template-columns: auto auto auto;
-  
+
   gap: 5rem;
   width: 800px;
   max-width: 100%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  span{
+
+  span {
     font-size: 26px;
   }
-  img{
+
+  img {
     padding-top: 10rem;
     width: 100%;
   }
@@ -136,6 +291,8 @@ body{
 
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); 
-        border-radius: 10%;}
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+    border-radius: 10%;
+  }
 }

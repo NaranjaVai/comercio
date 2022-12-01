@@ -1,7 +1,13 @@
-export const Footer =() => {
+export const Footer = () => {
     return <footer className="footer">
-        <h3 className="footerItem">Copyright</h3>
-        <h3 className="footerItem">Terms</h3>
+        <ul>
+            <li>
+                <h3 className="footerItem">Copyright - All Rights Reserved</h3>
+            </li>
+            <li><h3 className="footerItem">Angel Mendez</h3></li>
+        </ul>
+
+
 
     </footer>
 }

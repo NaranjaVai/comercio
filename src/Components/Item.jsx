@@ -3,7 +3,7 @@ import { UseCartCont } from "../context/cartContext";
 import { MdOutlineDone } from 'react-icons/md';
 
 
-const Item = ({ id, imagen, nombre, categoria, tag, precio,stock }) => {
+const Item = ({ id, imagen, nombre, categoria, tag, precio, stock }) => {
     const navigate = useNavigate();
     const { addProduct } = UseCartCont();
     return (<div className="card"
@@ -15,12 +15,12 @@ const Item = ({ id, imagen, nombre, categoria, tag, precio,stock }) => {
             <h2>{nombre}</h2>
             <h2>{categoria}</h2>
             <h3>${precio}</h3>
-            <span>{tag} </span>
-            <span>Disponibles: {stock}</span>
+            <h4>{tag} </h4>
+            <h4>Disponibles: {stock}</h4>
             <button onClick={(e) => {
                 e.stopPropagation();
                 addProduct({ id, nombre, precio, categoria, tag, imagen, stock }, 1)
-            }}>Add to Cart <MdOutlineDone /> </button>
+            }}>Add to Cart   <MdOutlineDone /> </button>
         </div>
     </div>);
 };
