@@ -5,7 +5,7 @@ import { addOrder } from "../api/orders";
 import { updateManyProducts } from "../api/productos";
 import Button from "../Components/Button";
 import { UserLayout } from "../Components/UserLayout";
-
+import Swal from 'sweetalert2';
 
 export const Cart = () => {
     const navigate = useNavigate();
@@ -30,7 +30,11 @@ export const Cart = () => {
         const id = await addOrder(order);
         /* await updateManyProducts(items); */
         emptyCart();
-        return(<swal></swal>)
+        return(Swal.fire({
+           title: 'Este es el codigo de su transaccion',
+           text:(id),
+           icon:'success' 
+        }))
     };
     return (
         <UserLayout>
